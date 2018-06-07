@@ -6,7 +6,7 @@ pipeline {
 
         stage ('build') {
             agent { label 'james-bond' }
-            when { expression { return env.BRANCH_NAME == 'develop'; } }
+            when { branch "develop" }
             steps {
                 checkout scm
                 script {
