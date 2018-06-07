@@ -1,0 +1,1 @@
+echo "The github SHA is: $1"
