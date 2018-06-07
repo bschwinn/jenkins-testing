@@ -17,8 +17,8 @@ pipeline {
         }
 
         stage ('feature') {
-            agent { label 'james-bond' }
-            when { branch "feature/*" }
+            agent { label 'windows' }
+            when { not { branch "develop" } }
             steps {
                 checkout scm
                 sh "./jenkins.sh test"
