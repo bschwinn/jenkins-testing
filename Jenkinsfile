@@ -23,7 +23,7 @@ pipeline {
             when { branch "feature/*" }
             steps {
                 checkout scm
-                sh "jenkins.sh"
+                sh "jenkins.sh test"
             }
         }
     }
