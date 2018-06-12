@@ -5,7 +5,7 @@ pipeline {
     stages {
 
         stage ('build') {
-            agent { label 'james-bond' }
+            agent { label 'linux-slave' }
             steps {
                 checkout scm
                 script {
@@ -27,7 +27,7 @@ pipeline {
         }
 
         stage ('feature') {
-            agent { label 'james-bond' }
+            agent { label 'linux-slave' }
             when { branch "feature/*" }
             steps {
                 checkout scm
