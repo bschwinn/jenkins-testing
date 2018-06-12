@@ -13,6 +13,7 @@ pipeline {
                     VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
                     sh "mkdir -p ./dist"
                     sh "./jenkins.sh ${GIT_SHORT_SHA} ${VERSION} > ./dist/jenkins.out.txt"
+                    archiveArtifacts artifacts: 'dist/*'
                 }
                 build job: "deploy-dservice", 
                     parameters: [
