@@ -16,8 +16,8 @@ pipeline {
                 }
                 build job: "deploy-dservice", 
                     parameters: [
-                        string(name: 'jobName', value: ${JOB_NAME}),
-                        string(name: 'version', value: ${VERSION}-${BUILDNUMBER})
+                        string(name: 'jobName', value: JOB_NAME),
+                        string(name: 'version', value: VERSION + "-" + String.valueOf(BUILDNUMBER))
                     ]
             }
         }
