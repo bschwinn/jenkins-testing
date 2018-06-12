@@ -6,7 +6,6 @@ pipeline {
 
         stage ('build') {
             agent { label 'james-bond' }
-            when { branch "develop" }
             steps {
                 checkout scm
                 script {
