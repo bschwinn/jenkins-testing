@@ -6,7 +6,6 @@ pipeline {
 
         stage ('build') {
             agent { label 'linux-slave' }
-            when { branch "develop" }
             steps {
                 script {
                     GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
