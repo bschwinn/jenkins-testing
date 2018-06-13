@@ -16,6 +16,10 @@ pipeline {
                     sh "./jenkins.sh ${GIT_SHORT_SHA} ${VERSION} > ./dist/jenkins.out.txt"
                     sh "echo ${VERSION} > ./dist/VERSION"
                     sh "echo ${GIT_SHORT_SHA} > ./dist/GITSHA"
+                    echo "publishing pre-release version to npm: " + PREREL_VERSION
+                    sh "npm version --no-git-tag-version " + PREREL_VERSION
+                    sh "npm publish --tag alpha"
+                    sh "npm version --no-git-tag-version " + VERSION
                     sh "aws s3 cp ./dist ${S3_LOC}/ --recursive --dryrun"
                 }
                 // build job: "deploy-dservice", 
